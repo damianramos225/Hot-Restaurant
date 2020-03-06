@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="jumbotron">
+            <h1 class="text-center"><span class="title"></span> Hot Restaurant</h1>
+            <hr>
+            <h2 class="text-center">Current Reservations and Waiting List</h2>
+            <br>
+
+            <div class="text-center">
+                <a href="/reserve"><button type="button" class="btn btn-lg btn-danger"><span class="eservation"></span>
+                        Make Reservation</button></a>
+                <a href="/"><button type="button"><span class="view-tables"></span></button></a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Current Reservations</h4>
+                    </div>
+                    <div class="panel-body" id="tableSection">
+                        <div class="well" id="1">
+                            <h2><span class="label ">1</span> | sdsdsd</h2>
+                        </div>
+                        <div class="well" id="">
+                            <h2><span class="label ">2</span> | www</h2>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h4 class="waiting-List">Waiting List</h4>
+                    </div>
+                    <div class="waitlist" id="waitlistSection">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <footer class="footer">
+            <div class="container">
+                <p>Control Panel</p>
+                <p><a href="#" id="clear">Clear Table</a> | <a href="/api/tables">API Table Link</a> | <a
+                        href="/api/waitlist">API Wait List</a></p>
+            </div>
+        </footer>
+
+    </div>
+
+
+
+
+    <script type="text/javascript">
+        // QUESTION: What is this code doing?
+        $("#search-btn").on("click", function () {
+            var searchedCharacter = $("#character-search").val().trim();
+
+            // Using a RegEx Pattern to remove spaces from searchedCharacter
+            // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
+            searchedCharacter = searchedCharacter.replace(/\s+/g, "").toLowerCase();
+
+            // QUESTION: What does $.get do? What are the parameters it is expecting?
+            $.get("/api/characters/" + searchedCharacter, function (data) {
+                console.log(data);
+                if (data) {
+                    $("#stats").show();
+                    $("#name").text(data.name);
+                    $("#role").text(data.role);
+                    $("#age").text(data.age);
+                    $("#force-points").text(data.forcePoints);
+                }
+                else {
+                    $("#name").text("The force is not strong with this one. Your character was not found.");
+                    $("#stats").hide();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
