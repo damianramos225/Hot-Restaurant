@@ -1,0 +1,23 @@
+{
+  "name": "restaurant-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/damianramos225/restaurant-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/damianramos225/restaurant-app/issues"
+  },
+  "homepage": "https://github.com/damianramos225/restaurant-app#readme"
+}
